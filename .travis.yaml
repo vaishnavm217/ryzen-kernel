@@ -1,0 +1,8 @@
+os: linux
+install:
+- sudo apt install -y git bc build-essential flex bison libssl-dev libelf-dev
+
+script:
+- make O=out eva_defconfig
+- make O=out -j$(nproc --all)
+- tar -cvJf out.tar.xz out/
